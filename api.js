@@ -1,11 +1,10 @@
 var mongoose = require("mongoose");
 var express = require("express");
-var router = express.Router();
 var TaskModel = require('./task_schema');
-
+var router = express.Router();
 let environment = null;
 
-if (!process.env.ON_HEROKU) {
+if (!process.env.ON_RENDER) {
     console.log("Cargando variables de entorno desde archivo");
     const env = require('node-env-file');
     env(__dirname + '/.env');
@@ -53,7 +52,7 @@ router.post('/create-task', function (req, res) {
             res.status(500).send("Internal error\n");
         }
         else {
-            res.status(200).send("OK\n");
+            res.status(200).send("Tarea registrada correctamente.\n");
         }
     });
 });
@@ -77,7 +76,7 @@ router.post('/update-task', function (req, res) {
         if (err) {
             res.status(500).send("Internal error\n");
         } else {
-            res.status(200).send("OK\n");
+            res.status(200).send("Tarea actualizada correctamente\n");
         }
     });
 });
@@ -87,7 +86,7 @@ router.delete('/delete-task', function (req, res) {
         if (err) {
             res.status(500).send("Internal error\n");
         } else {
-            res.status(200).send("OK\n");
+            res.status(200).send("Tarea borrada correctamente\n");
         }
     });
 });

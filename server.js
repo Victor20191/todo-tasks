@@ -1,9 +1,10 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const api = require('./api');
-const port = process.env.PORT || 3000;
+// const port = process.env.PORT || 3000;
+const port = 3001;
 const app = express();
 
+const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 app.listen(port, function () {
@@ -11,7 +12,6 @@ app.listen(port, function () {
 });
 
 app.get('/', function (req, res) {
-    res.send("hello world");
+    res.send("Trabajo final Web-Service");
 });
-
 app.use('/api', api);
